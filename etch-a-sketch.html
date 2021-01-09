@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Etch-a-sketch</title>
+    <style>
+    </style>
+  </head>
+
+  <body>
+
+  </body>
+  <script>
+      let i;
+      const body = document.querySelector('body');
+      const button = document.createElement('button');
+      button.textContent = "Reset";
+      body.appendChild(button);
+      const container = document.createElement('div');
+      container.className = "container";
+      body.appendChild(container);
+      body.style.display = "grid";
+      body.style.gridTemplate = "5vh 85vh/98vh"
+      body.style.placeContent = "center";
+      body.style.justifyContent = "center";
+      body.style.gridGap = "1vh";
+      container.style.margin = "auto";
+      container.style.display = 'grid';
+      let gridStyle="";
+      
+      for (i=0;i<16;i++){
+          gridStyle = gridStyle + "5.3vh ";
+      }
+
+      container.style.gridTemplateColumns = gridStyle;
+      container.style.gridTemplateRows = gridStyle;
+
+      for(i=0;i<256;i++){
+          const gridDiv = document.createElement('div');
+          gridDiv.className = "gridElement"
+          gridDiv.style.border = "1px solid black"
+          gridDiv.style.borderColor = "black";
+          gridDiv.addEventListener("mouseover", function(e){
+          e.target.style.background="blue";
+             });
+          container.appendChild(gridDiv);
+      }
+
+      button.addEventListener("click", function(){
+          const gridElement = document.querySelectorAll(".gridElement");
+          gridElement.forEach(element => {
+              element.style.background = "white";
+          });
+
+      });
+
+      
+  </script>
+
+</html>
